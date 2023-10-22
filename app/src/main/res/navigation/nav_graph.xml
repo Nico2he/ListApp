@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userPanelFragment">
+
+    <fragment
+        android:id="@+id/userPanelFragment"
+        android:name="com.nicorodgon.listapp.ui.userPanel.UserPanelFragment"
+        android:label="fragment_user_panel"
+        tools:layout="@layout/fragment_user_panel" >
+        <action
+            android:id="@+id/action_userPanelFragment_to_trashFragment"
+            app:destination="@id/trashFragment" />
+        <action
+            android:id="@+id/action_userPanelFragment_to_createListaFragment"
+            app:destination="@id/createListaFragment" />
+        <action
+            android:id="@+id/action_userPanelFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trashFragment"
+        android:name="com.nicorodgon.listapp.ui.trash.TrashFragment"
+        android:label="fragment_trash"
+        tools:layout="@layout/fragment_trash" >
+        <action
+            android:id="@+id/action_trashFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createListaFragment"
+        android:name="com.nicorodgon.listapp.ui.createLista.CreateListaFragment"
+        android:label="fragment_create_lista"
+        tools:layout="@layout/fragment_create_lista" >
+        <action
+            android:id="@+id/action_createListaFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.nicorodgon.listapp.ui.item.ItemFragment"
+        android:label="fragment_item"
+        tools:layout="@layout/fragment_item" >
+        <action
+            android:id="@+id/action_itemFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_createItemFragment"
+            app:destination="@id/createItemFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createItemFragment"
+        android:name="com.nicorodgon.listapp.ui.createItem.CreateItemFragment"
+        android:label="fragment_create_item"
+        tools:layout="@layout/fragment_create_item" >
+        <action
+            android:id="@+id/action_createItemFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.nicorodgon.listapp.ui.itemDetail.ItemDetailFragment"
+        android:label="fragment_item_detail"
+        tools:layout="@layout/fragment_item_detail" >
+        <action
+            android:id="@+id/action_itemDetailFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+
+</navigation>

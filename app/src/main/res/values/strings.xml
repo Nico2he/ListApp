@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ListApp</string>
+    <string name="nombre_item">Nombre Item</string>
+    <string name="descripci_n_item">Descripción Item</string>
+    <string name="escoger_imagen">Escoger Imagen</string>
+    <string name="anyadir_tem">Añadir Ítem</string>
+    <string name="nombre_lista">Nombre Lista</string>
+    <string name="anyadir_lista">Añadir Lista</string>
+    <string name="imagen_de_la_lista">Imagen de la lista</string>
+    <string name="boton_de_anyadir_tem">Botón de añadir ítem</string>
+    <string name="imagen_del_item">Imagen del ítem</string>
+    <string name="descripcion_del_item">Descripción del ítem</string>
+    <string name="notificame">Notifícame</string>
+    <string name="vaciar_papelera">Vaciar Papelera</string>
+    <string name="buscar">Buscar...</string>
+    <string name="boton_de_papelera">Botón de papelera</string>
+    <string name="boton_de_usuario">Botón de usuario</string>
+    <string name="boton_de_anyadir_lista">Botón de añadir lista</string>
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6c9ce0"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="250dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/white" >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="250dp"
+            android:layout_gravity="center" >
+
+            <ImageView
+                android:id="@+id/imagenItemDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/imagen_del_item" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nombreItemDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="8dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="@string/nombre_item"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#426cf5">
+
+        <TextView
+            android:id="@+id/descripcionItemDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="30dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:text="@string/descripcion_del_item"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <DatePicker
+            android:id="@+id/datePickerItem"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/notifyItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="#6c9ce0"
+            android:textColor="#FFFFFF"
+            android:text="@string/notificame"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="250dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        app:cardBackgroundColor="@color/white" >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="250dp"
+            android:layout_gravity="center" >
+
+            <ImageView
+                android:id="@+id/imagenItem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleY="1"
+                android:scaleX="1"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/imagen_del_item" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nombreItem"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/nombre_item"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/disableItemButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:clickable="true"
+        android:background="@android:drawable/ic_menu_delete"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:focusable="true" />
+
+</LinearLayout>
