@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.nicorodgon.listapp.model.ItemLista
 
 class ItemDetailViewModel(item: ItemLista): ViewModel() {
+
     private val _item = MutableLiveData(item)
     val item: LiveData<ItemLista> get() = _item
 
@@ -17,5 +18,4 @@ class ItemDetailViewModelFactory(private val item: ItemLista): ViewModelProvider
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ItemDetailViewModel(item) as T
     }
-
 }

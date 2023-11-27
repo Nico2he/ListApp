@@ -1,5 +1,6 @@
 package com.nicorodgon.listapp.ui.createLista
 
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicorodgon.listapp.model.DbFirestore
@@ -9,9 +10,9 @@ import kotlinx.coroutines.launch
 
 class CreateListaViewModel: ViewModel() {
 
-    fun createLista(lista: Lista){
+    fun createLista(lista: Lista, verifyListaCreated: TextView){
         viewModelScope.launch(Dispatchers.IO) {
-            DbFirestore.createLista(lista)
+            DbFirestore.createLista(lista, verifyListaCreated)
         }
     }
 }

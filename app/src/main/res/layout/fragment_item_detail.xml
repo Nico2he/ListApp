@@ -48,42 +48,56 @@
         android:text="@string/nombre_item"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#426cf5">
+        android:background="#426cf5" >
 
-        <TextView
-            android:id="@+id/descripcionItemDetail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginHorizontal="30dp"
-            android:textColor="@color/white"
-            android:layout_marginBottom="0dp"
-            android:gravity="center"
-            android:text="@string/descripcion_del_item"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+            android:orientation="vertical">
 
-        <DatePicker
-            android:id="@+id/datePickerItem"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
-            android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/descripcionItemDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:text="@string/descripcion_del_item"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-        <Button
-            android:id="@+id/notifyItemButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="#6c9ce0"
-            android:textColor="#FFFFFF"
-            android:text="@string/notificame"
-            android:layout_gravity="center_horizontal"/>
+            <DatePicker
+                android:id="@+id/datePickerItem"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:layout_gravity="center" />
 
-    </LinearLayout>
+            <TimePicker
+                android:id="@+id/timePickerItem"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:timePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/notifyItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="#6c9ce0"
+                android:textColor="#FFFFFF"
+                android:text="@string/notificame"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

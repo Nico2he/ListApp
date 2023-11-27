@@ -8,8 +8,10 @@ import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import com.nicorodgon.listapp.FragmentHost
+import com.nicorodgon.listapp.R
 
 class Login : AppCompatActivity() {
+
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
     ) { res ->
@@ -25,6 +27,7 @@ class Login : AppCompatActivity() {
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
+            .setLogo(R.drawable.app_icon)
             .build()
         signInLauncher.launch(signInIntent)
     }

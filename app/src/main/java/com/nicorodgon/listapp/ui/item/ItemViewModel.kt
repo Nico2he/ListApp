@@ -13,22 +13,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ItemViewModel(lista: Lista): ViewModel() {
+
     private val _state = MutableLiveData(UserPanelViewModel.UiState())
     val state: LiveData<UserPanelViewModel.UiState> get() = _state
     private val _lista = MutableLiveData(lista)
     val lista: LiveData<Lista> get() = _lista
+    val creador = lista.creador
 
     init {
         viewModelScope.launch(Dispatchers.Main) {
             _state.value = _state.value?.copy(loading = true)
-            DbFirestore.getAllObservableItemsEnabled(lista.nombre_lista).observeForever {
+            DbFirestore.getAllObservableItemsEnabled(lista.creador, lista.nombre_lista).observeForever {
                 _state.value = _state.value?.copy(loading = false, items = it)
             }
         }
-
     }
-
-    private suspend fun requestItems(): List<ItemLista>  = DbFirestore.getAllItems()
 
     fun navigateToItem(item: ItemLista) {
         _state.value = _state.value?.copy(navigateToItem = item)
@@ -37,7 +36,6 @@ class ItemViewModel(lista: Lista): ViewModel() {
     fun onNavigateDone(){
         _state.value = _state.value?.copy(navigateToItem = null)
     }
-
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -45,5 +43,4 @@ class ItemViewModelFactory(private val lista: Lista): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ItemViewModel(lista) as T
     }
-
 }

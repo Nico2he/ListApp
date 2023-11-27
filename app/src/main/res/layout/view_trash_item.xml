@@ -52,7 +52,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
-        android:background="@android:drawable/ic_input_add"
+        android:background="@android:drawable/ic_menu_add"
         android:visibility="visible"
         tools:visibility="visible"
         android:focusable="true" />

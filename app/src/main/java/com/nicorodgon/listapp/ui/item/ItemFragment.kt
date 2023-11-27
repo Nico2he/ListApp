@@ -1,7 +1,7 @@
 package com.nicorodgon.listapp.ui.item
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,9 +27,9 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
     private lateinit var binding: FragmentItemBinding
     private val adapterItem = AdapterItem(){ itemLista -> viewModel.navigateToItem(itemLista)}
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding = FragmentItemBinding.bind(view).apply {
             recyclerItem.adapter = adapterItem
         }
@@ -60,16 +60,18 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
                 )
                 viewModel.onNavigateDone()
             }
-
         }
 
         binding.addItemButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_itemFragment_to_createItemFragment,
-                bundleOf(Pair("lista", nombreListaPadre))
+                bundleOf(Pair("lista", nombreListaPadre), Pair("creador", viewModel.creador))
             )
         }
-
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("ItemFragment", "onDestroy")
+    }
 }

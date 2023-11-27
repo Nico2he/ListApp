@@ -48,6 +48,14 @@
         android:textColor="#FFFFFF"
         android:text="@string/escoger_imagen" />
 
+    <TextView
+        android:id="@+id/imageProportionsItem"
+        android:text="@string/se_recomiendan_imagenes_de_proporciones_1_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:textColor="@color/white" />
+
     <Button
         android:id="@+id/createItemButton"
         android:layout_width="wrap_content"

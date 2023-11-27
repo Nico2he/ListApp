@@ -78,7 +78,7 @@
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@android:drawable/ic_menu_add"
             android:visibility="visible"
             tools:visibility="visible"
             android:contentDescription="@string/boton_de_anyadir_tem"

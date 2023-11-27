@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="#426cf5"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/nombreUsuarioAdmin"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/nombre_usuario_admin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/deleteUsuarioAdminButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:background="@android:drawable/ic_menu_delete"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:focusable="true" />
+
+</LinearLayout>

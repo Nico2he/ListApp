@@ -19,9 +19,7 @@ class AdapterItem(val listener: (ItemLista) -> Unit):
             parent,
             false
         )
-
         return ViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +29,6 @@ class AdapterItem(val listener: (ItemLista) -> Unit):
         holder.itemView.setOnClickListener {
             listener(item)
         }
-
     }
 
     override fun getItemCount(): Int = items.size
@@ -39,8 +36,8 @@ class AdapterItem(val listener: (ItemLista) -> Unit):
     class ViewHolder(private val binding: ViewItemItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ItemLista) {
-
             binding.nombreItem.text = item.nombre_item
+
             binding.disableItemButton.setOnClickListener{
                 DbFirestore.disableItem(item)
             }
@@ -49,9 +46,6 @@ class AdapterItem(val listener: (ItemLista) -> Unit):
                 .with(binding.root.context)
                 .load(item.imagen_item)
                 .into(binding.imagenItem)
-
         }
-
     }
-
 }

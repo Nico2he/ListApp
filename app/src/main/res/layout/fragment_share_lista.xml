@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.shareLista.ShareListaFragment"
+    android:background="#6c9ce0" >
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="11"
+        android:hint="@string/email_usuario_a_compartir"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/shareListaUsuarioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#426cf5"
+        android:textColor="#FFFFFF"
+        android:text="@string/compartir" />
+
+    <TextView
+        android:id="@+id/verifyListaShared"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:textColor="@color/white" />
+
+</LinearLayout>

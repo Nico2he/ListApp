@@ -1,5 +1,6 @@
 package com.nicorodgon.listapp.ui.itemDetail
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.AlertDialog
@@ -9,13 +10,17 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -30,24 +35,33 @@ import java.util.Calendar
 import java.util.Date
 
 class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
+
+    private val REQUEST_CODE_POST_NOTIFICATIONS = 1
     private val viewModel: ItemDetailViewModel by viewModels {
         ItemDetailViewModelFactory(arguments?.getParcelable(EXTRA_ITEM)!!)
     }
     companion object {
         const val EXTRA_ITEM = "ItemDetailFragment:ItemLista"
-        private const val CHANNEL_ID = "channel01"
+        private const val CHANNEL_ID = "channel1"
     }
     private lateinit var binding: FragmentItemDetailBinding
     private var nombreItem = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding = FragmentItemDetailBinding.bind(view)
 
         binding.notifyItemButton.setOnClickListener {
-            scheduleNotification()
+            val permission = ContextCompat.checkSelfPermission(this.requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS)
+
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            } else {
+                scheduleNotification()
+            }
         }
 
         val imagenItemDetail = view.findViewById<ImageView>(R.id.imagenItemDetail)
@@ -61,9 +75,15 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
             descripcionItemDetail.text = item.descripcion
             nombreItem = item.nombre_item
         }
-
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("ItemDetailFragment", "onDestroy")
+    }
+
+    //La función scheduleNotification programará una notificación para el mes, día, año, hora y minuto
+    //que el usuario haya seleccionado
     @RequiresApi(Build.VERSION_CODES.O)
     private fun scheduleNotification() {
         createNotificationChannel()
@@ -82,6 +102,7 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
 
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val time = getTime()
+
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             time,
@@ -90,6 +111,8 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
         showAlert(time)
     }
 
+    //La función createNotificationChannel crea un canal de notificaciones para que el
+    //usuario pueda recibir la notificación programada
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -103,9 +126,11 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
         }
     }
 
+    //La función getTime devuelve la fecha y hora seleccionadas por el usuario en
+    //milisegundos
     private fun getTime(): Long {
-        val minute = 0
-        val hour = 0
+        val minute = binding.timePickerItem.minute
+        val hour = binding.timePickerItem.hour
         val day = binding.datePickerItem.dayOfMonth
         val month = binding.datePickerItem.month
         val year = binding.datePickerItem.year
@@ -115,6 +140,8 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
         return calendar.timeInMillis
     }
 
+    //La función showAlert muestra al usuario un cuadro de texto con la información de la
+    //notificación programada
     private fun showAlert(time: Long) {
         val date = Date(time)
         val dateFormat = android.text.format.DateFormat.getLongDateFormat(context)
@@ -129,4 +156,13 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
             .show()
     }
 
+    //La función makeRequest pide al usuario permiso para mostrar notificaciones
+    private fun makeRequest() {
+        this.activity?.let {
+            ActivityCompat.requestPermissions(
+                it,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                REQUEST_CODE_POST_NOTIFICATIONS)
+        }
+    }
 }

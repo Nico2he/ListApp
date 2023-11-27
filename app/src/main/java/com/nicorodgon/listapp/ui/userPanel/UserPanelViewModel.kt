@@ -1,33 +1,37 @@
 package com.nicorodgon.listapp.ui.userPanel
 
 import androidx.lifecycle.*
+import com.google.firebase.auth.FirebaseAuth
 import com.nicorodgon.listapp.model.DbFirestore
 import com.nicorodgon.listapp.model.ItemLista
 import com.nicorodgon.listapp.model.Lista
+import com.nicorodgon.listapp.model.Usuario
 import kotlinx.coroutines.*
 
 class UserPanelViewModel : ViewModel() {
+
     private val _state = MutableLiveData(UiState())
     val state: LiveData<UiState> get() = _state
+    private val email = FirebaseAuth.getInstance().currentUser?.email
 
     init {
         viewModelScope.launch(Dispatchers.Main) {
             _state.value = _state.value?.copy(loading = true)
-            DbFirestore.getAllObservableListasEnabled().observeForever {
-                _state.value = _state.value?.copy(loading = false, listas = it)
+            if (email != null) {
+                DbFirestore.getAllObservableListasEnabled(email).observeForever {
+                    _state.value = _state.value?.copy(loading = false, listas = it)
+                }
             }
         }
-
     }
 
-    private suspend fun requestListas(): List<Lista>  = DbFirestore.getAllListas()
+    //La función createUsuario añade al usuario pasado por parámetro a la base de datos
+    fun createUsuario(usuario: Usuario) {
+        DbFirestore.createUsuario(usuario)
+    }
 
     fun navigateTo(lista: Lista) {
         _state.value = _state.value?.copy(navigateTo = lista)
-    }
-
-    fun navigateToItem(item: ItemLista) {
-        _state.value = _state.value?.copy(navigateToItem = item)
     }
 
     fun onNavigateDone(){
@@ -42,5 +46,4 @@ class UserPanelViewModel : ViewModel() {
         val navigateToItem: ItemLista? = null,
         val navigateToCreate: Boolean = false
     )
-
 }

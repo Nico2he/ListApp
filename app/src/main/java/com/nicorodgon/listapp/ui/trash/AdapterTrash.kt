@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.nicorodgon.listapp.databinding.ViewTrashItemBinding
 import com.nicorodgon.listapp.model.DbFirestore
 import com.nicorodgon.listapp.model.Lista
@@ -19,9 +20,7 @@ class AdapterTrash(val listener: (Lista) -> Unit):
             parent,
             false
         )
-
         return ViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +30,6 @@ class AdapterTrash(val listener: (Lista) -> Unit):
         holder.itemView.setOnClickListener {
             listener(lista)
         }
-
     }
 
     override fun getItemCount(): Int = listas.size
@@ -39,19 +37,20 @@ class AdapterTrash(val listener: (Lista) -> Unit):
     class ViewHolder(private val binding: ViewTrashItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(lista: Lista) {
+            val email = FirebaseAuth.getInstance().currentUser?.email
 
             binding.nombreLista.text = lista.nombre_lista
+
             binding.enableListaButton.setOnClickListener{
-                DbFirestore.enableLista(lista)
+                if (email != null) {
+                    DbFirestore.enableLista(email, lista)
+                }
             }
 
             Glide
                 .with(binding.root.context)
                 .load(lista.imagen_lista)
                 .into(binding.imagenLista)
-
         }
-
     }
-
 }

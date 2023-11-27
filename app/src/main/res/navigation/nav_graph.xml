@@ -19,6 +19,15 @@
         <action
             android:id="@+id/action_userPanelFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_userPanelFragment_to_shareListaFragment"
+            app:destination="@id/shareListaFragment" />
+        <action
+            android:id="@+id/action_userPanelFragment_to_sharedPanelFragment"
+            app:destination="@id/sharedPanelFragment" />
+        <action
+            android:id="@+id/action_userPanelFragment_to_adminPanelListasFragment"
+            app:destination="@id/adminPanelListasFragment" />
     </fragment>
     <fragment
         android:id="@+id/trashFragment"
@@ -52,6 +61,9 @@
         <action
             android:id="@+id/action_itemFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_sharedPanelFragment"
+            app:destination="@id/sharedPanelFragment" />
     </fragment>
     <fragment
         android:id="@+id/createItemFragment"
@@ -70,6 +82,102 @@
         <action
             android:id="@+id/action_itemDetailFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shareListaFragment"
+        android:name="com.nicorodgon.listapp.ui.shareLista.ShareListaFragment"
+        android:label="fragment_share_lista"
+        tools:layout="@layout/fragment_share_lista" >
+        <action
+            android:id="@+id/action_shareListaFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedPanelFragment"
+        android:name="com.nicorodgon.listapp.ui.sharedPanel.SharedPanelFragment"
+        android:label="fragment_shared_panel"
+        tools:layout="@layout/fragment_shared_panel" >
+        <action
+            android:id="@+id/action_sharedPanelFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+        <action
+            android:id="@+id/action_sharedPanelFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_sharedPanelFragment_to_sharedTrashFragment"
+            app:destination="@id/sharedTrashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedTrashFragment"
+        android:name="com.nicorodgon.listapp.ui.sharedTrash.SharedTrashFragment"
+        android:label="fragment_shared_trash"
+        tools:layout="@layout/fragment_shared_trash" >
+        <action
+            android:id="@+id/action_sharedTrashFragment_to_sharedPanelFragment"
+            app:destination="@id/sharedPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPanelListasFragment"
+        android:name="com.nicorodgon.listapp.ui.adminPanelListas.AdminPanelListasFragment"
+        android:label="fragment_admin_panel_listas"
+        tools:layout="@layout/fragment_admin_panel_listas" >
+        <action
+            android:id="@+id/action_adminPanelListasFragment_to_userPanelFragment"
+            app:destination="@id/userPanelFragment" />
+        <action
+            android:id="@+id/action_adminPanelListasFragment_to_adminPanelUsuariosFragment"
+            app:destination="@id/adminPanelUsuariosFragment" />
+        <action
+            android:id="@+id/action_adminPanelListasFragment_to_adminPanelItemsFragment"
+            app:destination="@id/adminPanelItemsFragment" />
+        <action
+            android:id="@+id/action_adminPanelListasFragment_to_adminItemFragment"
+            app:destination="@id/adminItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPanelUsuariosFragment"
+        android:name="com.nicorodgon.listapp.ui.adminPanelUsuarios.AdminPanelUsuariosFragment"
+        android:label="fragment_admin_panel_usuarios"
+        tools:layout="@layout/fragment_admin_panel_usuarios" >
+        <action
+            android:id="@+id/action_adminPanelUsuariosFragment_to_adminPanelListasFragment"
+            app:destination="@id/adminPanelListasFragment" />
+        <action
+            android:id="@+id/action_adminPanelUsuariosFragment_to_adminPanelItemsFragment"
+            app:destination="@id/adminPanelItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPanelItemsFragment"
+        android:name="com.nicorodgon.listapp.ui.adminPanelItems.AdminPanelItemsFragment"
+        android:label="fragment_admin_panel_items"
+        tools:layout="@layout/fragment_admin_panel_items" >
+        <action
+            android:id="@+id/action_adminPanelItemsFragment_to_adminPanelListasFragment"
+            app:destination="@id/adminPanelListasFragment" />
+        <action
+            android:id="@+id/action_adminPanelItemsFragment_to_adminPanelUsuariosFragment"
+            app:destination="@id/adminPanelUsuariosFragment" />
+        <action
+            android:id="@+id/action_adminPanelItemsFragment_to_adminItemDetailFragment"
+            app:destination="@id/adminItemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminItemFragment"
+        android:name="com.nicorodgon.listapp.ui.adminItem.AdminItemFragment"
+        android:label="fragment_admin_item"
+        tools:layout="@layout/fragment_admin_item" >
+        <action
+            android:id="@+id/action_adminItemFragment_to_adminPanelListasFragment"
+            app:destination="@id/adminPanelListasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminItemDetailFragment"
+        android:name="com.nicorodgon.listapp.ui.adminItemDetail.AdminItemDetailFragment"
+        android:label="fragment_admin_item_detail"
+        tools:layout="@layout/fragment_admin_item_detail" >
+        <action
+            android:id="@+id/action_adminItemDetailFragment_to_adminPanelItemsFragment"
+            app:destination="@id/adminPanelItemsFragment" />
     </fragment>
 
 </navigation>
